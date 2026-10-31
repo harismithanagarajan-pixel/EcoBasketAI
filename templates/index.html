@@ -1,0 +1,252 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBasketAI | Smart Food Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5faf5;
+            color: #20352a;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: white;
+            box-shadow: 0 2px 10px #00000010;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #23834c;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #263b2e;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        .hero {
+            padding: 90px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background: linear-gradient(120deg, #e2f5e8, #f8fff9);
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #176b3b;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            background: #23834c;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #176b3b;
+        }
+
+        .hero-icon {
+            font-size: 150px;
+        }
+
+        .section {
+            padding: 65px 8%;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            color: #176b3b;
+            margin-bottom: 15px;
+        }
+
+        .section-desc {
+            color: #65756a;
+            margin-bottom: 35px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px #0000000c;
+        }
+
+        .card .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #23834c;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #65756a;
+            line-height: 1.6;
+        }
+
+        .about {
+            background: #e8f5eb;
+        }
+
+        footer {
+            background: #173d29;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 8px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 60px 6%;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-icon {
+                font-size: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">🌿 EcoBasketAI</div>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Fresh Food, Smart Living!</h1>
+
+        <p>
+            Welcome to EcoBasketAI – your smart food management
+            platform. Monitor food freshness, manage groceries,
+            track expiry dates and reduce food waste with AI.
+        </p>
+
+        <a href="/register" class="btn">Get Started</a>
+        <a href="/login" class="btn">Login</a>
+    </div>
+
+    <div class="hero-icon">🥗🍎🥦</div>
+</section>
+
+<section class="section">
+    <h2>Our Smart Features</h2>
+
+    <p class="section-desc">
+        Manage your food efficiently with intelligent technology.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🤖</div>
+            <h3>AI Freshness Detection</h3>
+            <p>Identify freshness conditions of supported fruits using image recognition.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🛒</div>
+            <h3>Grocery Management</h3>
+            <p>Add, update and manage your daily grocery items in one place.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⏰</div>
+            <h3>Expiry Alerts</h3>
+            <p>Track expiry dates and identify groceries that need attention.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">♻️</div>
+            <h3>Food Waste Reduction</h3>
+            <p>Get useful suggestions to help reduce unnecessary food waste.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section about">
+    <h2>About EcoBasketAI</h2>
+
+    <p class="section-desc">
+        EcoBasketAI combines artificial intelligence and smart grocery
+        management to encourage better food habits, reduce food waste
+        and support sustainable living.
+    </p>
+</section>
+
+<footer>
+    <p>© 2026 EcoBasketAI | Smart Food Management System</p>
+    <p>Eat Smart. Save Food. Live Green. 🌱</p>
+</footer>
+
+</body>
+</html>
+```

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBasketAI - AI Freshness Detection</title>
+
+```
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f2f8f2;
+        color: #26382b;
+    }
+
+    nav {
+        background: #176b3a;
+        color: white;
+        padding: 18px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 22px;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: #c9f2a5;
+    }
+
+    .container {
+        max-width: 780px;
+        margin: 45px auto;
+        padding: 40px;
+        background: white;
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        text-align: center;
+    }
+
+    .tag {
+        display: inline-block;
+        background: #e5f5e8;
+        color: #176b3a;
+        padding: 8px 18px;
+        border-radius: 25px;
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 18px;
+    }
+
+    h1 {
+        color: #176b3a;
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .description {
+        color: #657568;
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+
+    .upload-box {
+        border: 2px dashed #83b735;
+        background: #f5fbf4;
+        padding: 35px 20px;
+        border-radius: 14px;
+        margin-bottom: 25px;
+    }
+
+    .upload-icon {
+        font-size: 55px;
+        margin-bottom: 15px;
+    }
+
+    .upload-box h3 {
+        color: #176b3a;
+        margin-bottom: 10px;
+    }
+
+    .upload-box p {
+        color: #718071;
+        font-size: 14px;
+    }
+
+    input[type="file"] {
+        margin-top: 20px;
+        max-width: 100%;
+    }
+
+    button {
+        background: #176b3a;
+        color: white;
+        border: none;
+        padding: 15px 32px;
+        border-radius: 9px;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #0e512a;
+        transform: translateY(-2px);
+    }
+
+    .result {
+        margin-top: 35px;
+        padding: 28px;
+        background: #f5fbf4;
+        border-radius: 14px;
+        border: 1px solid #d6ead8;
+    }
+
+    .result h2 {
+        color: #176b3a;
+        margin-bottom: 22px;
+    }
+
+    .result img {
+        width: 230px;
+        max-width: 100%;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 13px;
+        margin-bottom: 20px;
+    }
+
+    .result p {
+        font-size: 17px;
+        margin: 14px 0;
+    }
+
+    .fresh {
+        color: #16833b;
+        font-weight: bold;
+    }
+
+    .rotten {
+        color: #d62828;
+        font-weight: bold;
+    }
+
+    .message {
+        background: #ffe8e8;
+        color: #a32020;
+        padding: 12px;
+        border-radius: 7px;
+        margin-bottom: 20px;
+    }
+
+    footer {
+        background: #124d2d;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 50px;
+    }
+
+    @media (max-width: 600px) {
+        nav {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .container {
+            margin: 25px 15px;
+            padding: 25px 18px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<nav>
+    <div class="logo">🍃 EcoBasketAI</div>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="tag">SMART FOOD TECHNOLOGY</div>
+
+    <h1>🍎 AI Fruit Freshness Detection</h1>
+
+    <p class="description">
+        Upload an image of a fruit and let our Artificial Intelligence
+        model analyse its freshness. Get an AI-generated prediction
+        to help you make informed food-management decisions.
+    </p>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('predict') }}"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <div class="upload-box">
+
+            <div class="upload-icon">📸</div>
+
+            <h3>Select Your Fruit Image</h3>
+
+            <p>Choose a JPG, JPEG or PNG image from your device.</p>
+
+            <input
+                type="file"
+                name="fruit_image"
+                accept=".jpg,.jpeg,.png"
+                required
+            >
+
+        </div>
+
+        <button type="submit">
+            🔍 Detect Freshness
+        </button>
+
+    </form>
+
+    {% if freshness %}
+
+    <div class="result">
+
+        <h2>🌱 AI Prediction Result</h2>
+
+        {% if image_filename %}
+            <img
+                src="{{ url_for('uploaded_file', filename=image_filename) }}"
+                alt="Uploaded Fruit Image"
+            >
+        {% endif %}
+
+        <p>
+            <strong>Fruit Name:</strong>
+            {{ fruit_name }}
+        </p>
+
+        <p>
+            <strong>Freshness:</strong>
+
+            {% if freshness == "FRESH" %}
+                <span class="fresh">{{ freshness }} ✅</span>
+            {% else %}
+                <span class="rotten">{{ freshness }} ❌</span>
+            {% endif %}
+        </p>
+
+        <p>
+            <strong>Confidence:</strong>
+            {{ confidence }}%
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+<footer>
+    <p>© 2026 EcoBasketAI | Smart Living, Less Food Waste 🌱</p>
+</footer>
+```
+
+</body>
+</html>

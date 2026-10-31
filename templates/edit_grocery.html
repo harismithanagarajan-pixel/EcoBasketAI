@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Grocery | EcoBasket AI</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="inventory-body">
+
+    <div class="edit-container">
+
+        <h1>✏️ Edit Grocery</h1>
+
+        <form method="POST">
+
+            <label>Grocery Name</label>
+            <input type="text" name="name"
+            value="{{ grocery.name }}" required>
+
+            <label>Category</label>
+
+            <select name="category" required>
+                {% for category in ['Vegetables','Fruits','Dairy','Grains','Other'] %}
+                    <option value="{{ category }}"
+                    {% if grocery.category == category %}selected{% endif %}>
+                        {{ category }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label>Quantity</label>
+            <input type="number" name="quantity"
+            value="{{ grocery.quantity }}" min="0.01"
+            step="0.01" required>
+
+            <label>Unit</label>
+
+            <select name="unit" required>
+                {% for unit in ['kg','grams','pieces','litres','packets'] %}
+                    <option value="{{ unit }}"
+                    {% if grocery.unit == unit %}selected{% endif %}>
+                        {{ unit }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label>Purchase Date</label>
+            <input type="date" name="purchase_date"
+            value="{{ grocery.purchase_date }}" required>
+
+            <label>Expiry Date</label>
+            <input type="date" name="expiry_date"
+            value="{{ grocery.expiry_date }}" required>
+
+            <button type="submit" class="add-btn">
+                Update Grocery
+            </button>
+
+        </form>
+
+        <a href="{{ url_for('inventory') }}" class="back-btn">
+            ← Back to Inventory
+        </a>
+
+    </div>
+
+</body>
+</html>

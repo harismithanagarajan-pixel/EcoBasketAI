@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | EcoBasket AI</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="auth-body">
+
+    <div class="register-container">
+
+        <div class="register-left">
+
+            <h1>🌱 EcoBasket AI</h1>
+
+            <h2>Welcome Back!</h2>
+
+            <p>
+                Your smart kitchen is waiting for you.
+                Login to manage your groceries,
+                track freshness and reduce food waste.
+            </p>
+
+            <div class="register-emoji">
+                🥑 🍅 🥕 🥦
+            </div>
+
+            <h3>Stay Fresh, Save Smart, Waste Less!</h3>
+
+        </div>
+
+
+        <div class="register-right">
+
+            <h2>Login to Your Account</h2>
+
+            <p>Continue your smart food management journey.</p>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="message">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+
+                <label>Email Address</label>
+
+                <input type="email"
+                name="email"
+                placeholder="Enter your email"
+                required>
+
+
+                <label>Password</label>
+
+                <input type="password"
+                name="password"
+                placeholder="Enter your password"
+                required>
+
+
+                <button type="submit">
+                    Login →
+                </button>
+
+            </form>
+
+            <p class="login-text">
+                Don't have an account?
+                <a href="{{ url_for('register') }}">Register</a>
+            </p>
+
+            <a href="/" class="back-home">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

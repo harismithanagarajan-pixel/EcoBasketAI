@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.env
+ai/database/ecobasket.db
+database/ecobasket.db
+uploads/
+database/dataset/
+.vscode/
