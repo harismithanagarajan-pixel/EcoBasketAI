@@ -2,10 +2,15 @@ __pycache__/
 *.py[cod]
 venv/
 .venv/
+env/
 .env
-ai/database/ecobasket.db
-uploads/
-database/dataset/
-.vscode/
 
-database/ecobasket.db
+ai/dataset/
+ai/uploads/
+ai/database/*.db
+database/*.db
+
+ai/models/*.keras
+ai/models/*.h5
+
+.vscode/
